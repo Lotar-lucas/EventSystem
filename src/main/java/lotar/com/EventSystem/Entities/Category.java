@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.ArrayList;
@@ -21,7 +22,9 @@ public class Category {
   @Column(columnDefinition = "TEXT")
   private String description;
 
+  @OneToMany(mappedBy = "category")
   private List<Activity> activities = new ArrayList<>();
+
 
   public Category() {};
 
@@ -45,4 +48,9 @@ public class Category {
   public void setDescription(String description) {
     this.description = description;
   }
+
+  public List<Activity> getActivities() {
+    return activities;
+  }
+
 }
